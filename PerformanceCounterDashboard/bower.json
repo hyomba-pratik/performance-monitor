@@ -1,0 +1,22 @@
+{
+  "name": "PerformanceCounterDashboard",
+  "authors": [
+    "Pratik Hyomba <phyomba@bluepandauc.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "chart.js": "Chart.js#v2.7.2",
+    "moment": "2.22.2"
+  }
+}

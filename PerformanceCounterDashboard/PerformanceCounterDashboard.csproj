@@ -1,0 +1,798 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FFE673F2-450D-4349-A9EB-79F3E5F9E16F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PerformanceCounterDashboard</RootNamespace>
+    <AssemblyName>PerformanceCounterDashboard</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\chart.js\dist\Chart.bundle.js" />
+    <Content Include="assets\chart.js\dist\Chart.bundle.min.js" />
+    <Content Include="assets\chart.js\dist\Chart.js" />
+    <Content Include="assets\chart.js\dist\Chart.min.js" />
+    <Content Include="assets\chart.js\docs\style.css" />
+    <Content Include="assets\chart.js\gulpfile.js" />
+    <Content Include="assets\chart.js\karma.conf.js" />
+    <Content Include="assets\chart.js\samples\advanced\data-labelling.html" />
+    <Content Include="assets\chart.js\samples\advanced\progress-bar.html" />
+    <Content Include="assets\chart.js\samples\charts\area\analyser.js" />
+    <Content Include="assets\chart.js\samples\charts\area\line-boundaries.html" />
+    <Content Include="assets\chart.js\samples\charts\area\line-datasets.html" />
+    <Content Include="assets\chart.js\samples\charts\area\line-stacked.html" />
+    <Content Include="assets\chart.js\samples\charts\area\radar.html" />
+    <Content Include="assets\chart.js\samples\charts\bar\horizontal.html" />
+    <Content Include="assets\chart.js\samples\charts\bar\multi-axis.html" />
+    <Content Include="assets\chart.js\samples\charts\bar\stacked-group.html" />
+    <Content Include="assets\chart.js\samples\charts\bar\stacked.html" />
+    <Content Include="assets\chart.js\samples\charts\bar\vertical.html" />
+    <Content Include="assets\chart.js\samples\charts\bubble.html" />
+    <Content Include="assets\chart.js\samples\charts\combo-bar-line.html" />
+    <Content Include="assets\chart.js\samples\charts\doughnut.html" />
+    <Content Include="assets\chart.js\samples\charts\line\basic.html" />
+    <Content Include="assets\chart.js\samples\charts\line\interpolation-modes.html" />
+    <Content Include="assets\chart.js\samples\charts\line\line-styles.html" />
+    <Content Include="assets\chart.js\samples\charts\line\multi-axis.html" />
+    <Content Include="assets\chart.js\samples\charts\line\point-sizes.html" />
+    <Content Include="assets\chart.js\samples\charts\line\point-styles.html" />
+    <Content Include="assets\chart.js\samples\charts\line\skip-points.html" />
+    <Content Include="assets\chart.js\samples\charts\line\stepped.html" />
+    <Content Include="assets\chart.js\samples\charts\pie.html" />
+    <Content Include="assets\chart.js\samples\charts\polar-area.html" />
+    <Content Include="assets\chart.js\samples\charts\radar-skip-points.html" />
+    <Content Include="assets\chart.js\samples\charts\radar.html" />
+    <Content Include="assets\chart.js\samples\charts\scatter\basic.html" />
+    <Content Include="assets\chart.js\samples\charts\scatter\multi-axis.html" />
+    <Content Include="assets\chart.js\samples\favicon.ico" />
+    <Content Include="assets\chart.js\samples\index.html" />
+    <Content Include="assets\chart.js\samples\legend\point-style.html" />
+    <Content Include="assets\chart.js\samples\legend\positioning.html" />
+    <Content Include="assets\chart.js\samples\logo.svg" />
+    <Content Include="assets\chart.js\samples\samples.js" />
+    <Content Include="assets\chart.js\samples\scales\filtering-labels.html" />
+    <Content Include="assets\chart.js\samples\scales\gridlines-display.html" />
+    <Content Include="assets\chart.js\samples\scales\gridlines-style.html" />
+    <Content Include="assets\chart.js\samples\scales\linear\min-max-suggested.html" />
+    <Content Include="assets\chart.js\samples\scales\linear\min-max.html" />
+    <Content Include="assets\chart.js\samples\scales\linear\step-size.html" />
+    <Content Include="assets\chart.js\samples\scales\logarithmic\line.html" />
+    <Content Include="assets\chart.js\samples\scales\logarithmic\scatter.html" />
+    <Content Include="assets\chart.js\samples\scales\multiline-labels.html" />
+    <Content Include="assets\chart.js\samples\scales\non-numeric-y.html" />
+    <Content Include="assets\chart.js\samples\scales\time\combo.html" />
+    <Content Include="assets\chart.js\samples\scales\time\financial.html" />
+    <Content Include="assets\chart.js\samples\scales\time\line-point-data.html" />
+    <Content Include="assets\chart.js\samples\scales\time\line.html" />
+    <Content Include="assets\chart.js\samples\scales\toggle-scale-type.html" />
+    <Content Include="assets\chart.js\samples\scriptable\bubble.html" />
+    <Content Include="assets\chart.js\samples\style.css" />
+    <Content Include="assets\chart.js\samples\tooltips\border.html" />
+    <Content Include="assets\chart.js\samples\tooltips\callbacks.html" />
+    <Content Include="assets\chart.js\samples\tooltips\custom-line.html" />
+    <Content Include="assets\chart.js\samples\tooltips\custom-pie.html" />
+    <Content Include="assets\chart.js\samples\tooltips\custom-points.html" />
+    <Content Include="assets\chart.js\samples\tooltips\interactions.html" />
+    <Content Include="assets\chart.js\samples\tooltips\positioning.html" />
+    <Content Include="assets\chart.js\samples\utils.js" />
+    <Content Include="assets\chart.js\src\chart.js" />
+    <Content Include="assets\chart.js\src\charts\Chart.Bar.js" />
+    <Content Include="assets\chart.js\src\charts\Chart.Bubble.js" />
+    <Content Include="assets\chart.js\src\charts\Chart.Doughnut.js" />
+    <Content Include="assets\chart.js\src\charts\Chart.Line.js" />
+    <Content Include="assets\chart.js\src\charts\Chart.PolarArea.js" />
+    <Content Include="assets\chart.js\src\charts\Chart.Radar.js" />
+    <Content Include="assets\chart.js\src\charts\Chart.Scatter.js" />
+    <Content Include="assets\chart.js\src\controllers\controller.bar.js" />
+    <Content Include="assets\chart.js\src\controllers\controller.bubble.js" />
+    <Content Include="assets\chart.js\src\controllers\controller.doughnut.js" />
+    <Content Include="assets\chart.js\src\controllers\controller.line.js" />
+    <Content Include="assets\chart.js\src\controllers\controller.polarArea.js" />
+    <Content Include="assets\chart.js\src\controllers\controller.radar.js" />
+    <Content Include="assets\chart.js\src\controllers\controller.scatter.js" />
+    <Content Include="assets\chart.js\src\core\core.animation.js" />
+    <Content Include="assets\chart.js\src\core\core.controller.js" />
+    <Content Include="assets\chart.js\src\core\core.datasetController.js" />
+    <Content Include="assets\chart.js\src\core\core.defaults.js" />
+    <Content Include="assets\chart.js\src\core\core.element.js" />
+    <Content Include="assets\chart.js\src\core\core.helpers.js" />
+    <Content Include="assets\chart.js\src\core\core.interaction.js" />
+    <Content Include="assets\chart.js\src\core\core.js" />
+    <Content Include="assets\chart.js\src\core\core.layouts.js" />
+    <Content Include="assets\chart.js\src\core\core.plugins.js" />
+    <Content Include="assets\chart.js\src\core\core.scale.js" />
+    <Content Include="assets\chart.js\src\core\core.scaleService.js" />
+    <Content Include="assets\chart.js\src\core\core.ticks.js" />
+    <Content Include="assets\chart.js\src\core\core.tooltip.js" />
+    <Content Include="assets\chart.js\src\elements\element.arc.js" />
+    <Content Include="assets\chart.js\src\elements\element.line.js" />
+    <Content Include="assets\chart.js\src\elements\element.point.js" />
+    <Content Include="assets\chart.js\src\elements\element.rectangle.js" />
+    <Content Include="assets\chart.js\src\elements\index.js" />
+    <Content Include="assets\chart.js\src\helpers\helpers.canvas.js" />
+    <Content Include="assets\chart.js\src\helpers\helpers.core.js" />
+    <Content Include="assets\chart.js\src\helpers\helpers.easing.js" />
+    <Content Include="assets\chart.js\src\helpers\helpers.options.js" />
+    <Content Include="assets\chart.js\src\helpers\index.js" />
+    <Content Include="assets\chart.js\src\platforms\platform.basic.js" />
+    <Content Include="assets\chart.js\src\platforms\platform.dom.js" />
+    <Content Include="assets\chart.js\src\platforms\platform.js" />
+    <Content Include="assets\chart.js\src\plugins\index.js" />
+    <Content Include="assets\chart.js\src\plugins\plugin.filler.js" />
+    <Content Include="assets\chart.js\src\plugins\plugin.legend.js" />
+    <Content Include="assets\chart.js\src\plugins\plugin.title.js" />
+    <Content Include="assets\chart.js\src\scales\scale.category.js" />
+    <Content Include="assets\chart.js\src\scales\scale.linear.js" />
+    <Content Include="assets\chart.js\src\scales\scale.linearbase.js" />
+    <Content Include="assets\chart.js\src\scales\scale.logarithmic.js" />
+    <Content Include="assets\chart.js\src\scales\scale.radialLinear.js" />
+    <Content Include="assets\chart.js\src\scales\scale.time.js" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-absolute.png" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-flex-offset.png" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-flex.png" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-max.png" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-min-interval.png" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-multiple.png" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-no-overlap.png" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-offset.png" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-single-xy.png" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-single.png" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-stacked.png" />
+    <Content Include="assets\chart.js\test\fixtures\core.scale\label-offset-vertical-axes.png" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-end-span.png" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-end.png" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-origin-span.png" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-origin-spline-span.png" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-origin-spline.png" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-origin-stepped-span.png" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-origin-stepped.png" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-origin.png" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-start-span.png" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-start.png" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-dataset-span.png" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-dataset-spline-span.png" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-dataset-spline.png" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-dataset.png" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-radar-boundary-origin-spline.png" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-radar-boundary-origin.png" />
+    <Content Include="assets\chart.js\test\jasmine.context.js" />
+    <Content Include="assets\chart.js\test\jasmine.index.js" />
+    <Content Include="assets\chart.js\test\jasmine.matchers.js" />
+    <Content Include="assets\chart.js\test\jasmine.utils.js" />
+    <Content Include="assets\chart.js\test\specs\controller.bar.tests.js" />
+    <Content Include="assets\chart.js\test\specs\controller.bubble.tests.js" />
+    <Content Include="assets\chart.js\test\specs\controller.doughnut.tests.js" />
+    <Content Include="assets\chart.js\test\specs\controller.line.tests.js" />
+    <Content Include="assets\chart.js\test\specs\controller.polarArea.tests.js" />
+    <Content Include="assets\chart.js\test\specs\controller.radar.tests.js" />
+    <Content Include="assets\chart.js\test\specs\controller.scatter.test.js" />
+    <Content Include="assets\chart.js\test\specs\core.controller.tests.js" />
+    <Content Include="assets\chart.js\test\specs\core.datasetController.tests.js" />
+    <Content Include="assets\chart.js\test\specs\core.element.tests.js" />
+    <Content Include="assets\chart.js\test\specs\core.helpers.tests.js" />
+    <Content Include="assets\chart.js\test\specs\core.interaction.tests.js" />
+    <Content Include="assets\chart.js\test\specs\core.layouts.tests.js" />
+    <Content Include="assets\chart.js\test\specs\core.plugin.tests.js" />
+    <Content Include="assets\chart.js\test\specs\core.scale.tests.js" />
+    <Content Include="assets\chart.js\test\specs\core.scaleService.tests.js" />
+    <Content Include="assets\chart.js\test\specs\core.ticks.tests.js" />
+    <Content Include="assets\chart.js\test\specs\core.tooltip.tests.js" />
+    <Content Include="assets\chart.js\test\specs\element.arc.tests.js" />
+    <Content Include="assets\chart.js\test\specs\element.line.tests.js" />
+    <Content Include="assets\chart.js\test\specs\element.point.tests.js" />
+    <Content Include="assets\chart.js\test\specs\element.rectangle.tests.js" />
+    <Content Include="assets\chart.js\test\specs\global.defaults.tests.js" />
+    <Content Include="assets\chart.js\test\specs\global.deprecations.tests.js" />
+    <Content Include="assets\chart.js\test\specs\helpers.canvas.tests.js" />
+    <Content Include="assets\chart.js\test\specs\helpers.core.tests.js" />
+    <Content Include="assets\chart.js\test\specs\helpers.easing.tests.js" />
+    <Content Include="assets\chart.js\test\specs\helpers.options.tests.js" />
+    <Content Include="assets\chart.js\test\specs\platform.dom.tests.js" />
+    <Content Include="assets\chart.js\test\specs\plugin.filler.tests.js" />
+    <Content Include="assets\chart.js\test\specs\plugin.legend.tests.js" />
+    <Content Include="assets\chart.js\test\specs\plugin.title.tests.js" />
+    <Content Include="assets\chart.js\test\specs\scale.category.tests.js" />
+    <Content Include="assets\chart.js\test\specs\scale.linear.tests.js" />
+    <Content Include="assets\chart.js\test\specs\scale.logarithmic.tests.js" />
+    <Content Include="assets\chart.js\test\specs\scale.radialLinear.tests.js" />
+    <Content Include="assets\chart.js\test\specs\scale.time.tests.js" />
+    <Content Include="assets\moment\locale\af.js" />
+    <Content Include="assets\moment\locale\ar-dz.js" />
+    <Content Include="assets\moment\locale\ar-kw.js" />
+    <Content Include="assets\moment\locale\ar-ly.js" />
+    <Content Include="assets\moment\locale\ar-ma.js" />
+    <Content Include="assets\moment\locale\ar-sa.js" />
+    <Content Include="assets\moment\locale\ar-tn.js" />
+    <Content Include="assets\moment\locale\ar.js" />
+    <Content Include="assets\moment\locale\az.js" />
+    <Content Include="assets\moment\locale\be.js" />
+    <Content Include="assets\moment\locale\bg.js" />
+    <Content Include="assets\moment\locale\bm.js" />
+    <Content Include="assets\moment\locale\bn.js" />
+    <Content Include="assets\moment\locale\bo.js" />
+    <Content Include="assets\moment\locale\br.js" />
+    <Content Include="assets\moment\locale\bs.js" />
+    <Content Include="assets\moment\locale\ca.js" />
+    <Content Include="assets\moment\locale\cs.js" />
+    <Content Include="assets\moment\locale\cv.js" />
+    <Content Include="assets\moment\locale\cy.js" />
+    <Content Include="assets\moment\locale\da.js" />
+    <Content Include="assets\moment\locale\de-at.js" />
+    <Content Include="assets\moment\locale\de-ch.js" />
+    <Content Include="assets\moment\locale\de.js" />
+    <Content Include="assets\moment\locale\dv.js" />
+    <Content Include="assets\moment\locale\el.js" />
+    <Content Include="assets\moment\locale\en-au.js" />
+    <Content Include="assets\moment\locale\en-ca.js" />
+    <Content Include="assets\moment\locale\en-gb.js" />
+    <Content Include="assets\moment\locale\en-ie.js" />
+    <Content Include="assets\moment\locale\en-il.js" />
+    <Content Include="assets\moment\locale\en-nz.js" />
+    <Content Include="assets\moment\locale\eo.js" />
+    <Content Include="assets\moment\locale\es-do.js" />
+    <Content Include="assets\moment\locale\es-us.js" />
+    <Content Include="assets\moment\locale\es.js" />
+    <Content Include="assets\moment\locale\et.js" />
+    <Content Include="assets\moment\locale\eu.js" />
+    <Content Include="assets\moment\locale\fa.js" />
+    <Content Include="assets\moment\locale\fi.js" />
+    <Content Include="assets\moment\locale\fo.js" />
+    <Content Include="assets\moment\locale\fr-ca.js" />
+    <Content Include="assets\moment\locale\fr-ch.js" />
+    <Content Include="assets\moment\locale\fr.js" />
+    <Content Include="assets\moment\locale\fy.js" />
+    <Content Include="assets\moment\locale\gd.js" />
+    <Content Include="assets\moment\locale\gl.js" />
+    <Content Include="assets\moment\locale\gom-latn.js" />
+    <Content Include="assets\moment\locale\gu.js" />
+    <Content Include="assets\moment\locale\he.js" />
+    <Content Include="assets\moment\locale\hi.js" />
+    <Content Include="assets\moment\locale\hr.js" />
+    <Content Include="assets\moment\locale\hu.js" />
+    <Content Include="assets\moment\locale\hy-am.js" />
+    <Content Include="assets\moment\locale\id.js" />
+    <Content Include="assets\moment\locale\is.js" />
+    <Content Include="assets\moment\locale\it.js" />
+    <Content Include="assets\moment\locale\ja.js" />
+    <Content Include="assets\moment\locale\jv.js" />
+    <Content Include="assets\moment\locale\ka.js" />
+    <Content Include="assets\moment\locale\kk.js" />
+    <Content Include="assets\moment\locale\km.js" />
+    <Content Include="assets\moment\locale\kn.js" />
+    <Content Include="assets\moment\locale\ko.js" />
+    <Content Include="assets\moment\locale\ky.js" />
+    <Content Include="assets\moment\locale\lb.js" />
+    <Content Include="assets\moment\locale\lo.js" />
+    <Content Include="assets\moment\locale\lt.js" />
+    <Content Include="assets\moment\locale\lv.js" />
+    <Content Include="assets\moment\locale\me.js" />
+    <Content Include="assets\moment\locale\mi.js" />
+    <Content Include="assets\moment\locale\mk.js" />
+    <Content Include="assets\moment\locale\ml.js" />
+    <Content Include="assets\moment\locale\mn.js" />
+    <Content Include="assets\moment\locale\mr.js" />
+    <Content Include="assets\moment\locale\ms-my.js" />
+    <Content Include="assets\moment\locale\ms.js" />
+    <Content Include="assets\moment\locale\mt.js" />
+    <Content Include="assets\moment\locale\my.js" />
+    <Content Include="assets\moment\locale\nb.js" />
+    <Content Include="assets\moment\locale\ne.js" />
+    <Content Include="assets\moment\locale\nl-be.js" />
+    <Content Include="assets\moment\locale\nl.js" />
+    <Content Include="assets\moment\locale\nn.js" />
+    <Content Include="assets\moment\locale\pa-in.js" />
+    <Content Include="assets\moment\locale\pl.js" />
+    <Content Include="assets\moment\locale\pt-br.js" />
+    <Content Include="assets\moment\locale\pt.js" />
+    <Content Include="assets\moment\locale\ro.js" />
+    <Content Include="assets\moment\locale\ru.js" />
+    <Content Include="assets\moment\locale\sd.js" />
+    <Content Include="assets\moment\locale\se.js" />
+    <Content Include="assets\moment\locale\si.js" />
+    <Content Include="assets\moment\locale\sk.js" />
+    <Content Include="assets\moment\locale\sl.js" />
+    <Content Include="assets\moment\locale\sq.js" />
+    <Content Include="assets\moment\locale\sr-cyrl.js" />
+    <Content Include="assets\moment\locale\sr.js" />
+    <Content Include="assets\moment\locale\ss.js" />
+    <Content Include="assets\moment\locale\sv.js" />
+    <Content Include="assets\moment\locale\sw.js" />
+    <Content Include="assets\moment\locale\ta.js" />
+    <Content Include="assets\moment\locale\te.js" />
+    <Content Include="assets\moment\locale\tet.js" />
+    <Content Include="assets\moment\locale\tg.js" />
+    <Content Include="assets\moment\locale\th.js" />
+    <Content Include="assets\moment\locale\tl-ph.js" />
+    <Content Include="assets\moment\locale\tlh.js" />
+    <Content Include="assets\moment\locale\tr.js" />
+    <Content Include="assets\moment\locale\tzl.js" />
+    <Content Include="assets\moment\locale\tzm-latn.js" />
+    <Content Include="assets\moment\locale\tzm.js" />
+    <Content Include="assets\moment\locale\ug-cn.js" />
+    <Content Include="assets\moment\locale\uk.js" />
+    <Content Include="assets\moment\locale\ur.js" />
+    <Content Include="assets\moment\locale\uz-latn.js" />
+    <Content Include="assets\moment\locale\uz.js" />
+    <Content Include="assets\moment\locale\vi.js" />
+    <Content Include="assets\moment\locale\x-pseudo.js" />
+    <Content Include="assets\moment\locale\yo.js" />
+    <Content Include="assets\moment\locale\zh-cn.js" />
+    <Content Include="assets\moment\locale\zh-hk.js" />
+    <Content Include="assets\moment\locale\zh-tw.js" />
+    <Content Include="assets\moment\min\locales.js" />
+    <Content Include="assets\moment\min\locales.min.js" />
+    <Content Include="assets\moment\min\moment-with-locales.js" />
+    <Content Include="assets\moment\min\moment-with-locales.min.js" />
+    <Content Include="assets\moment\min\moment.min.js" />
+    <Content Include="assets\moment\moment.js" />
+    <Content Include="assets\moment\src\lib\create\check-overflow.js" />
+    <Content Include="assets\moment\src\lib\create\date-from-array.js" />
+    <Content Include="assets\moment\src\lib\create\from-anything.js" />
+    <Content Include="assets\moment\src\lib\create\from-array.js" />
+    <Content Include="assets\moment\src\lib\create\from-object.js" />
+    <Content Include="assets\moment\src\lib\create\from-string-and-array.js" />
+    <Content Include="assets\moment\src\lib\create\from-string-and-format.js" />
+    <Content Include="assets\moment\src\lib\create\from-string.js" />
+    <Content Include="assets\moment\src\lib\create\local.js" />
+    <Content Include="assets\moment\src\lib\create\parsing-flags.js" />
+    <Content Include="assets\moment\src\lib\create\utc.js" />
+    <Content Include="assets\moment\src\lib\create\valid.js" />
+    <Content Include="assets\moment\src\lib\duration\abs.js" />
+    <Content Include="assets\moment\src\lib\duration\add-subtract.js" />
+    <Content Include="assets\moment\src\lib\duration\as.js" />
+    <Content Include="assets\moment\src\lib\duration\bubble.js" />
+    <Content Include="assets\moment\src\lib\duration\clone.js" />
+    <Content Include="assets\moment\src\lib\duration\constructor.js" />
+    <Content Include="assets\moment\src\lib\duration\create.js" />
+    <Content Include="assets\moment\src\lib\duration\duration.js" />
+    <Content Include="assets\moment\src\lib\duration\get.js" />
+    <Content Include="assets\moment\src\lib\duration\humanize.js" />
+    <Content Include="assets\moment\src\lib\duration\iso-string.js" />
+    <Content Include="assets\moment\src\lib\duration\prototype.js" />
+    <Content Include="assets\moment\src\lib\duration\valid.js" />
+    <Content Include="assets\moment\src\lib\format\format.js" />
+    <Content Include="assets\moment\src\lib\locale\base-config.js" />
+    <Content Include="assets\moment\src\lib\locale\calendar.js" />
+    <Content Include="assets\moment\src\lib\locale\constructor.js" />
+    <Content Include="assets\moment\src\lib\locale\en.js" />
+    <Content Include="assets\moment\src\lib\locale\formats.js" />
+    <Content Include="assets\moment\src\lib\locale\invalid.js" />
+    <Content Include="assets\moment\src\lib\locale\lists.js" />
+    <Content Include="assets\moment\src\lib\locale\locale.js" />
+    <Content Include="assets\moment\src\lib\locale\locales.js" />
+    <Content Include="assets\moment\src\lib\locale\ordinal.js" />
+    <Content Include="assets\moment\src\lib\locale\pre-post-format.js" />
+    <Content Include="assets\moment\src\lib\locale\prototype.js" />
+    <Content Include="assets\moment\src\lib\locale\relative.js" />
+    <Content Include="assets\moment\src\lib\locale\set.js" />
+    <Content Include="assets\moment\src\lib\moment\add-subtract.js" />
+    <Content Include="assets\moment\src\lib\moment\calendar.js" />
+    <Content Include="assets\moment\src\lib\moment\clone.js" />
+    <Content Include="assets\moment\src\lib\moment\compare.js" />
+    <Content Include="assets\moment\src\lib\moment\constructor.js" />
+    <Content Include="assets\moment\src\lib\moment\creation-data.js" />
+    <Content Include="assets\moment\src\lib\moment\diff.js" />
+    <Content Include="assets\moment\src\lib\moment\format.js" />
+    <Content Include="assets\moment\src\lib\moment\from.js" />
+    <Content Include="assets\moment\src\lib\moment\get-set.js" />
+    <Content Include="assets\moment\src\lib\moment\locale.js" />
+    <Content Include="assets\moment\src\lib\moment\min-max.js" />
+    <Content Include="assets\moment\src\lib\moment\moment.js" />
+    <Content Include="assets\moment\src\lib\moment\now.js" />
+    <Content Include="assets\moment\src\lib\moment\prototype.js" />
+    <Content Include="assets\moment\src\lib\moment\start-end-of.js" />
+    <Content Include="assets\moment\src\lib\moment\to-type.js" />
+    <Content Include="assets\moment\src\lib\moment\to.js" />
+    <Content Include="assets\moment\src\lib\moment\valid.js" />
+    <Content Include="assets\moment\src\lib\parse\regex.js" />
+    <Content Include="assets\moment\src\lib\parse\token.js" />
+    <Content Include="assets\moment\src\lib\units\aliases.js" />
+    <Content Include="assets\moment\src\lib\units\constants.js" />
+    <Content Include="assets\moment\src\lib\units\day-of-month.js" />
+    <Content Include="assets\moment\src\lib\units\day-of-week.js" />
+    <Content Include="assets\moment\src\lib\units\day-of-year.js" />
+    <Content Include="assets\moment\src\lib\units\hour.js" />
+    <Content Include="assets\moment\src\lib\units\millisecond.js" />
+    <Content Include="assets\moment\src\lib\units\minute.js" />
+    <Content Include="assets\moment\src\lib\units\month.js" />
+    <Content Include="assets\moment\src\lib\units\offset.js" />
+    <Content Include="assets\moment\src\lib\units\priorities.js" />
+    <Content Include="assets\moment\src\lib\units\quarter.js" />
+    <Content Include="assets\moment\src\lib\units\second.js" />
+    <Content Include="assets\moment\src\lib\units\timestamp.js" />
+    <Content Include="assets\moment\src\lib\units\timezone.js" />
+    <Content Include="assets\moment\src\lib\units\units.js" />
+    <Content Include="assets\moment\src\lib\units\week-calendar-utils.js" />
+    <Content Include="assets\moment\src\lib\units\week-year.js" />
+    <Content Include="assets\moment\src\lib\units\week.js" />
+    <Content Include="assets\moment\src\lib\units\year.js" />
+    <Content Include="assets\moment\src\lib\utils\abs-ceil.js" />
+    <Content Include="assets\moment\src\lib\utils\abs-floor.js" />
+    <Content Include="assets\moment\src\lib\utils\abs-round.js" />
+    <Content Include="assets\moment\src\lib\utils\compare-arrays.js" />
+    <Content Include="assets\moment\src\lib\utils\defaults.js" />
+    <Content Include="assets\moment\src\lib\utils\deprecate.js" />
+    <Content Include="assets\moment\src\lib\utils\extend.js" />
+    <Content Include="assets\moment\src\lib\utils\has-own-prop.js" />
+    <Content Include="assets\moment\src\lib\utils\hooks.js" />
+    <Content Include="assets\moment\src\lib\utils\index-of.js" />
+    <Content Include="assets\moment\src\lib\utils\is-array.js" />
+    <Content Include="assets\moment\src\lib\utils\is-date.js" />
+    <Content Include="assets\moment\src\lib\utils\is-function.js" />
+    <Content Include="assets\moment\src\lib\utils\is-number.js" />
+    <Content Include="assets\moment\src\lib\utils\is-object-empty.js" />
+    <Content Include="assets\moment\src\lib\utils\is-object.js" />
+    <Content Include="assets\moment\src\lib\utils\is-undefined.js" />
+    <Content Include="assets\moment\src\lib\utils\keys.js" />
+    <Content Include="assets\moment\src\lib\utils\map.js" />
+    <Content Include="assets\moment\src\lib\utils\mod.js" />
+    <Content Include="assets\moment\src\lib\utils\some.js" />
+    <Content Include="assets\moment\src\lib\utils\to-int.js" />
+    <Content Include="assets\moment\src\lib\utils\zero-fill.js" />
+    <Content Include="assets\moment\src\locale\af.js" />
+    <Content Include="assets\moment\src\locale\ar-dz.js" />
+    <Content Include="assets\moment\src\locale\ar-kw.js" />
+    <Content Include="assets\moment\src\locale\ar-ly.js" />
+    <Content Include="assets\moment\src\locale\ar-ma.js" />
+    <Content Include="assets\moment\src\locale\ar-sa.js" />
+    <Content Include="assets\moment\src\locale\ar-tn.js" />
+    <Content Include="assets\moment\src\locale\ar.js" />
+    <Content Include="assets\moment\src\locale\az.js" />
+    <Content Include="assets\moment\src\locale\be.js" />
+    <Content Include="assets\moment\src\locale\bg.js" />
+    <Content Include="assets\moment\src\locale\bm.js" />
+    <Content Include="assets\moment\src\locale\bn.js" />
+    <Content Include="assets\moment\src\locale\bo.js" />
+    <Content Include="assets\moment\src\locale\br.js" />
+    <Content Include="assets\moment\src\locale\bs.js" />
+    <Content Include="assets\moment\src\locale\ca.js" />
+    <Content Include="assets\moment\src\locale\cs.js" />
+    <Content Include="assets\moment\src\locale\cv.js" />
+    <Content Include="assets\moment\src\locale\cy.js" />
+    <Content Include="assets\moment\src\locale\da.js" />
+    <Content Include="assets\moment\src\locale\de-at.js" />
+    <Content Include="assets\moment\src\locale\de-ch.js" />
+    <Content Include="assets\moment\src\locale\de.js" />
+    <Content Include="assets\moment\src\locale\dv.js" />
+    <Content Include="assets\moment\src\locale\el.js" />
+    <Content Include="assets\moment\src\locale\en-au.js" />
+    <Content Include="assets\moment\src\locale\en-ca.js" />
+    <Content Include="assets\moment\src\locale\en-gb.js" />
+    <Content Include="assets\moment\src\locale\en-ie.js" />
+    <Content Include="assets\moment\src\locale\en-il.js" />
+    <Content Include="assets\moment\src\locale\en-nz.js" />
+    <Content Include="assets\moment\src\locale\eo.js" />
+    <Content Include="assets\moment\src\locale\es-do.js" />
+    <Content Include="assets\moment\src\locale\es-us.js" />
+    <Content Include="assets\moment\src\locale\es.js" />
+    <Content Include="assets\moment\src\locale\et.js" />
+    <Content Include="assets\moment\src\locale\eu.js" />
+    <Content Include="assets\moment\src\locale\fa.js" />
+    <Content Include="assets\moment\src\locale\fi.js" />
+    <Content Include="assets\moment\src\locale\fo.js" />
+    <Content Include="assets\moment\src\locale\fr-ca.js" />
+    <Content Include="assets\moment\src\locale\fr-ch.js" />
+    <Content Include="assets\moment\src\locale\fr.js" />
+    <Content Include="assets\moment\src\locale\fy.js" />
+    <Content Include="assets\moment\src\locale\gd.js" />
+    <Content Include="assets\moment\src\locale\gl.js" />
+    <Content Include="assets\moment\src\locale\gom-latn.js" />
+    <Content Include="assets\moment\src\locale\gu.js" />
+    <Content Include="assets\moment\src\locale\he.js" />
+    <Content Include="assets\moment\src\locale\hi.js" />
+    <Content Include="assets\moment\src\locale\hr.js" />
+    <Content Include="assets\moment\src\locale\hu.js" />
+    <Content Include="assets\moment\src\locale\hy-am.js" />
+    <Content Include="assets\moment\src\locale\id.js" />
+    <Content Include="assets\moment\src\locale\is.js" />
+    <Content Include="assets\moment\src\locale\it.js" />
+    <Content Include="assets\moment\src\locale\ja.js" />
+    <Content Include="assets\moment\src\locale\jv.js" />
+    <Content Include="assets\moment\src\locale\ka.js" />
+    <Content Include="assets\moment\src\locale\kk.js" />
+    <Content Include="assets\moment\src\locale\km.js" />
+    <Content Include="assets\moment\src\locale\kn.js" />
+    <Content Include="assets\moment\src\locale\ko.js" />
+    <Content Include="assets\moment\src\locale\ky.js" />
+    <Content Include="assets\moment\src\locale\lb.js" />
+    <Content Include="assets\moment\src\locale\lo.js" />
+    <Content Include="assets\moment\src\locale\lt.js" />
+    <Content Include="assets\moment\src\locale\lv.js" />
+    <Content Include="assets\moment\src\locale\me.js" />
+    <Content Include="assets\moment\src\locale\mi.js" />
+    <Content Include="assets\moment\src\locale\mk.js" />
+    <Content Include="assets\moment\src\locale\ml.js" />
+    <Content Include="assets\moment\src\locale\mn.js" />
+    <Content Include="assets\moment\src\locale\mr.js" />
+    <Content Include="assets\moment\src\locale\ms-my.js" />
+    <Content Include="assets\moment\src\locale\ms.js" />
+    <Content Include="assets\moment\src\locale\mt.js" />
+    <Content Include="assets\moment\src\locale\my.js" />
+    <Content Include="assets\moment\src\locale\nb.js" />
+    <Content Include="assets\moment\src\locale\ne.js" />
+    <Content Include="assets\moment\src\locale\nl-be.js" />
+    <Content Include="assets\moment\src\locale\nl.js" />
+    <Content Include="assets\moment\src\locale\nn.js" />
+    <Content Include="assets\moment\src\locale\pa-in.js" />
+    <Content Include="assets\moment\src\locale\pl.js" />
+    <Content Include="assets\moment\src\locale\pt-br.js" />
+    <Content Include="assets\moment\src\locale\pt.js" />
+    <Content Include="assets\moment\src\locale\ro.js" />
+    <Content Include="assets\moment\src\locale\ru.js" />
+    <Content Include="assets\moment\src\locale\sd.js" />
+    <Content Include="assets\moment\src\locale\se.js" />
+    <Content Include="assets\moment\src\locale\si.js" />
+    <Content Include="assets\moment\src\locale\sk.js" />
+    <Content Include="assets\moment\src\locale\sl.js" />
+    <Content Include="assets\moment\src\locale\sq.js" />
+    <Content Include="assets\moment\src\locale\sr-cyrl.js" />
+    <Content Include="assets\moment\src\locale\sr.js" />
+    <Content Include="assets\moment\src\locale\ss.js" />
+    <Content Include="assets\moment\src\locale\sv.js" />
+    <Content Include="assets\moment\src\locale\sw.js" />
+    <Content Include="assets\moment\src\locale\ta.js" />
+    <Content Include="assets\moment\src\locale\te.js" />
+    <Content Include="assets\moment\src\locale\tet.js" />
+    <Content Include="assets\moment\src\locale\tg.js" />
+    <Content Include="assets\moment\src\locale\th.js" />
+    <Content Include="assets\moment\src\locale\tl-ph.js" />
+    <Content Include="assets\moment\src\locale\tlh.js" />
+    <Content Include="assets\moment\src\locale\tr.js" />
+    <Content Include="assets\moment\src\locale\tzl.js" />
+    <Content Include="assets\moment\src\locale\tzm-latn.js" />
+    <Content Include="assets\moment\src\locale\tzm.js" />
+    <Content Include="assets\moment\src\locale\ug-cn.js" />
+    <Content Include="assets\moment\src\locale\uk.js" />
+    <Content Include="assets\moment\src\locale\ur.js" />
+    <Content Include="assets\moment\src\locale\uz-latn.js" />
+    <Content Include="assets\moment\src\locale\uz.js" />
+    <Content Include="assets\moment\src\locale\vi.js" />
+    <Content Include="assets\moment\src\locale\x-pseudo.js" />
+    <Content Include="assets\moment\src\locale\yo.js" />
+    <Content Include="assets\moment\src\locale\zh-cn.js" />
+    <Content Include="assets\moment\src\locale\zh-hk.js" />
+    <Content Include="assets\moment\src\locale\zh-tw.js" />
+    <Content Include="assets\moment\src\moment.js" />
+    <Content Include="assets\moment\templates\default.js" />
+    <Content Include="assets\moment\templates\locale-header.js" />
+    <Content Include="assets\moment\templates\test-header.js" />
+    <Content Include="index.html" />
+    <Content Include="assets\moment\.bower.json" />
+    <Content Include="assets\moment\bower.json" />
+    <Content Include="assets\moment\CHANGELOG.md" />
+    <Content Include="assets\moment\LICENSE" />
+    <Content Include="assets\moment\package-lock.json" />
+    <Content Include="assets\moment\README.md" />
+    <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.3.0.js" />
+    <Content Include="Scripts\jquery.signalR-2.3.0.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".bowerrc" />
+    <Content Include="assets\chart.js\.bower.json" />
+    <Content Include="assets\chart.js\.editorconfig" />
+    <Content Include="assets\chart.js\.eslintignore" />
+    <Content Include="assets\chart.js\.eslintrc.yml" />
+    <Content Include="assets\chart.js\.htmllintrc" />
+    <Content Include="assets\chart.js\book.json" />
+    <Content Include="assets\chart.js\bower.json" />
+    <Content Include="assets\chart.js\composer.json" />
+    <Content Include="assets\chart.js\docs\axes\cartesian\category.md" />
+    <Content Include="assets\chart.js\docs\axes\cartesian\linear.md" />
+    <Content Include="assets\chart.js\docs\axes\cartesian\logarithmic.md" />
+    <Content Include="assets\chart.js\docs\axes\cartesian\README.md" />
+    <Content Include="assets\chart.js\docs\axes\cartesian\time.md" />
+    <Content Include="assets\chart.js\docs\axes\labelling.md" />
+    <Content Include="assets\chart.js\docs\axes\radial\linear.md" />
+    <Content Include="assets\chart.js\docs\axes\radial\README.md" />
+    <Content Include="assets\chart.js\docs\axes\README.md" />
+    <Content Include="assets\chart.js\docs\axes\styling.md" />
+    <Content Include="assets\chart.js\docs\charts\area.md" />
+    <Content Include="assets\chart.js\docs\charts\bar.md" />
+    <Content Include="assets\chart.js\docs\charts\bubble.md" />
+    <Content Include="assets\chart.js\docs\charts\doughnut.md" />
+    <Content Include="assets\chart.js\docs\charts\line.md" />
+    <Content Include="assets\chart.js\docs\charts\mixed.md" />
+    <Content Include="assets\chart.js\docs\charts\polar.md" />
+    <Content Include="assets\chart.js\docs\charts\radar.md" />
+    <Content Include="assets\chart.js\docs\charts\README.md" />
+    <Content Include="assets\chart.js\docs\charts\scatter.md" />
+    <Content Include="assets\chart.js\docs\configuration\animations.md" />
+    <Content Include="assets\chart.js\docs\configuration\elements.md" />
+    <Content Include="assets\chart.js\docs\configuration\layout.md" />
+    <Content Include="assets\chart.js\docs\configuration\legend.md" />
+    <Content Include="assets\chart.js\docs\configuration\README.md" />
+    <Content Include="assets\chart.js\docs\configuration\title.md" />
+    <Content Include="assets\chart.js\docs\configuration\tooltip.md" />
+    <Content Include="assets\chart.js\docs\developers\api.md" />
+    <Content Include="assets\chart.js\docs\developers\axes.md" />
+    <Content Include="assets\chart.js\docs\developers\charts.md" />
+    <Content Include="assets\chart.js\docs\developers\contributing.md" />
+    <Content Include="assets\chart.js\docs\developers\plugins.md" />
+    <Content Include="assets\chart.js\docs\developers\README.md" />
+    <Content Include="assets\chart.js\docs\developers\updates.md" />
+    <Content Include="assets\chart.js\docs\general\colors.md" />
+    <Content Include="assets\chart.js\docs\general\device-pixel-ratio.md" />
+    <Content Include="assets\chart.js\docs\general\fonts.md" />
+    <Content Include="assets\chart.js\docs\general\interactions\events.md" />
+    <Content Include="assets\chart.js\docs\general\interactions\modes.md" />
+    <Content Include="assets\chart.js\docs\general\interactions\README.md" />
+    <Content Include="assets\chart.js\docs\general\options.md" />
+    <Content Include="assets\chart.js\docs\general\README.md" />
+    <Content Include="assets\chart.js\docs\general\responsive.md" />
+    <Content Include="assets\chart.js\docs\getting-started\installation.md" />
+    <Content Include="assets\chart.js\docs\getting-started\integration.md" />
+    <Content Include="assets\chart.js\docs\getting-started\README.md" />
+    <Content Include="assets\chart.js\docs\getting-started\usage.md" />
+    <Content Include="assets\chart.js\docs\notes\comparison.md" />
+    <Content Include="assets\chart.js\docs\notes\extensions.md" />
+    <Content Include="assets\chart.js\docs\notes\license.md" />
+    <Content Include="assets\chart.js\docs\notes\README.md" />
+    <Content Include="assets\chart.js\docs\README.md" />
+    <Content Include="assets\chart.js\docs\SUMMARY.md" />
+    <Content Include="assets\chart.js\LICENSE.md" />
+    <Content Include="assets\chart.js\MAINTAINING.md" />
+    <Content Include="assets\chart.js\package.json" />
+    <Content Include="assets\chart.js\README.md" />
+    <Content Include="assets\chart.js\samples\.eslintrc.yml" />
+    <Content Include="assets\chart.js\test\.eslintrc.yml" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-absolute.json" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-flex-offset.json" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-flex.json" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-max.json" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-min-interval.json" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-multiple.json" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-no-overlap.json" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-offset.json" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-single-xy.json" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-single.json" />
+    <Content Include="assets\chart.js\test\fixtures\controller.bar\bar-thickness-stacked.json" />
+    <Content Include="assets\chart.js\test\fixtures\core.scale\label-offset-vertical-axes.json" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-end-span.json" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-end.json" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-origin-span.json" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-origin-spline-span.json" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-origin-spline.json" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-origin-stepped-span.json" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-origin-stepped.json" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-origin.json" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-start-span.json" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-boundary-start.json" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-dataset-span.json" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-dataset-spline-span.json" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-dataset-spline.json" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-line-dataset.json" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-radar-boundary-origin-spline.json" />
+    <Content Include="assets\chart.js\test\fixtures\plugin.filler\fill-radar-boundary-origin.json" />
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Week5Challenge\Week5Challenge.csproj">
+      <Project>{450d709e-175c-48d4-9af3-6558ceb0ac07}</Project>
+      <Name>Week5Challenge</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="assets\moment\moment.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54613</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54613/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
